@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>王若榴 · Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="global-particle-bg"></canvas>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-name">WANG RUOLIU</span>
+            <span class="brand-tagline">Product · AI Strategy</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 顶部中央一级导航（毛玻璃胶囊） -->
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <button class="primary-tab active" data-tab="about">About</button>
+        <button class="primary-tab" data-tab="work">Work</button>
+        <button class="primary-tab" data-tab="blog">Blog</button>
+        <button class="primary-tab" data-tab="gallery">Gallery</button>
+      </nav>
+
+      <!-- ===== 主内容：四个一级 Tab Screen ===== -->
+      <!-- About Screen -->
+      <section class="screen active" id="screen-about">
+        <div class="two-column">
+          <!-- 左侧 Sticky Sidebar -->
+          <aside class="about-sidebar">
+            <!-- Profile -->
+            <div class="profile-block">
+              <div class="profile-avatar">
+                <img src="photo.jpg" alt="王若榴头像" />
+              </div>
+              <div class="profile-text">
+                <h1 class="profile-name">王若榴</h1>
+                <p class="profile-role">Product / AI Strategy</p>
+              </div>
+            </div>
+
+            <!-- 垂直二级导航 -->
+            <nav class="about-nav" aria-label="About sections">
+              <button
+                class="about-nav-item active"
+                data-target="about-intro"
+              >
+                Introduction
+              </button>
+              <button
+                class="about-nav-item"
+                data-target="work-experience"
+              >
+                Work Experience
+              </button>
+              <button
+                class="about-nav-item"
+                data-target="education-experience"
+              >
+                Education Experience
+              </button>
+              <button
+                class="about-nav-item"
+                data-target="technical-skills"
+              >
+                Technical Skills
+              </button>
+            </nav>
+
+            <!-- 联系方式卡片 -->
+            <section class="contact-card">
+              <h2 class="contact-title">Contact</h2>
+              <div class="contact-row">
+                <span class="contact-label">小红书 / 公众号</span>
+                <span class="contact-value">引数十六</span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label">Email</span>
+                <a href="mailto:973016765@qq.com" class="contact-value">
+                  973016765@qq.com
+                </a>
+              </div>
+            </section>
+
+            <!-- 数字分身入口按钮已移动至 Hero Section -->
+          </aside>
+
+          <!-- 右侧宽幅滚动区 -->
+          <section class="about-content">
+            <!-- Introduction: Hero Bento Box -->
+            <section
+              id="about-intro"
+              class="about-section"
+              data-section="about-intro"
+            >
+              <div class="hero-bento">
+                <!-- Main Card -->
+                <div class="bento-card hero-main">
+                  <div class="hero-header">
+                    <div class="hero-title-wrap">
+                      <h1 class="hero-greeting">Hi, 我是若榴。</h1>
+                    </div>
+                    <!-- 数字分身按钮：重构为 AI 魔法风格 -->
+                    <button
+                      id="chat-trigger"
+                      class="chat-trigger-magic"
+                      type="button"
+                      aria-label="与我的 AI 替身对话"
+                    >
+                      <span class="magic-bg"></span>
+                      <span class="magic-label">
+                        <span class="magic-icon">✨</span>
+                        与我的 AI 替身聊聊
+                      </span>
+                    </button>
+                  </div>
+                  <p class="hero-tagline">AI Product Manager & Storyteller.</p>
+                </div>
+
+                <!-- Status Card: Live Status Widget -->
+                <div class="bento-card hero-status">
+                  <div class="status-header">
+                    <div class="status-dot-wrap">
+                      <span class="pulse-dot"></span>
+                      <span class="pulse-ring"></span>
+                    </div>
+                    <span class="status-label">LIVE STATUS</span>
+                  </div>
+                  
+                  <div class="widget-content">
+                    <div class="widget-item">
+                      <div class="item-info">
+                        <span class="item-name">Vibe Coding & AI Product</span>
+                        <div class="mini-progress">
+                          <div class="progress-bar-flow"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="widget-item">
+                      <div class="item-info">
+                        <span class="item-name">Storytelling</span>
+                        <div class="sparkle-wrap">
+                          <span class="sparkle"></span>
+                          <span class="sparkle"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section
+              id="work-experience"
+              class="about-section"
+              data-section="work-experience"
+            >
+              <div class="bento-card span-2">
+                <h2 class="section-title">Work Experience</h2>
+
+                <!-- Xiaomi -->
+                <article class="work-card">
+                  <header class="work-header">
+                    <div>
+                      <div class="work-company">小米集团</div>
+                      <div class="work-role">AI 策略产品经理实习生</div>
+                    </div>
+                    <div class="work-time">2025.04 – 2025.12 · 武汉</div>
+                  </header>
+
+                  <div class="work-badges">
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      文本生成能力提升专项
+                    </span>
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      车载高频未命中唤醒专项
+                    </span>
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      Badcase 运营与评测支持
+                    </span>
+                  </div>
+
+                  <p class="work-summary">
+                    围绕小米 AI 创作与车载助手场景，构建“理想态”评估体系并多轮推进策略优化，将文本生成能力的可用率提升至
+                    <span class="metric">30.8%</span>，同时搭建 Badcase 滚动闭环与评测体系，支撑团队持续决策。
+                  </p>
+
+                  <button
+                    class="work-toggle"
+                    type="button"
+                    data-details="work-xiaomi"
+                  >
+                    <span class="work-toggle-label">View Details</span>
+                    <span class="work-toggle-arrow">↓</span>
+                  </button>
+
+                  <div class="work-details" id="work-xiaomi">
+                    <h4 class="item-title">
+                      1. AI 创作文本生成能力提升专项 (项目 Owner)
+                    </h4>
+                    <ul class="bullet-list">
+                      <li>
+                        构建评估体系： 针对创作 agent 完善一套包含真实性、准确性、安全性等维度的“理想态”评估标准，有效降低了与大模型研发团队之间的沟通与理解难度。
+                      </li>
+                      <li>
+                        策略迭代与量化优化： 推动两轮针对性优化（如：润色类回复条数 ≥ 3、报告规划类强制占位符、营销文案增加 emoji 等硬性约束），最终实现可用率提升
+                        <span class="metric">30.8%</span>，满足率提升
+                        <span class="metric">20.6%</span>。
+                      </li>
+                      <li>
+                        突破瓶颈期： 在优化幅度放缓时，通过构建 AI 创作专项、积累 Badcase 并形成滚动优化机制，持续驱动产品进化。
+                      </li>
+                    </ul>
+
+                    <h4 class="item-title">
+                      2. 车载高频未命中 App 唤醒专项优化
+                    </h4>
+                    <ul class="bullet-list">
+                      <li>
+                        深度归因分析： 对车载场景中“打不开应用”等高频负反馈进行拆解，将其归因为垂域混淆、意图误判、SmartApp 欠召等 6 个核心维度。
+                      </li>
+                      <li>
+                        协同方案落地： 独立负责该专项并推动多部门方案对齐，通过定位负责人与精准话术引导，最终使测试集中的 Badcase 解决率达到
+                        <span class="metric">96.15%</span>。
+                      </li>
+                    </ul>
+
+                    <h4 class="item-title">
+                      3. 例行工作 SOP 化与决策支持
+                    </h4>
+                    <ul class="bullet-list">
+                      <li>
+                        Badcase 质量运营： 建立了“收录—周报同步—验收闭环”的 SOP 流程，实习期间累计建设 P0/P00 级 Badcase 520 项，解决
+                        <span class="metric">400+</span> 项。
+                      </li>
+                      <li>
+                        基模/接口评测： 参与基模与接口更新决策，累计进行 GSB 评测 17 次，理想态评测 10 次，修正例行评测量
+                        <span class="metric">50+</span> 项，为团队高级决策提供了核心数据支撑。
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- Oak Black Card -->
+                <article class="work-card">
+                  <header class="work-header">
+                    <div>
+                      <div class="work-company">橡树黑卡网络科技有限公司</div>
+                      <div class="work-role">B 端产品经理实习生</div>
+                    </div>
+                    <div class="work-time">2024.11 – 2025.01 · 深圳</div>
+                  </header>
+
+                  <div class="work-badges">
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      Keep 大会员抽奖策略
+                    </span>
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      券码管理系统优化
+                    </span>
+                  </div>
+
+                  <p class="work-summary">
+                    针对高价值权益核销率高、成本难控以及后台操作冗长的问题，从数据与作业流两个维度重构抽奖与券码管理体验，使关键操作时间缩短
+                    <span class="metric">38.20%</span>，错误率降低
+                    <span class="metric">20.80%</span>。
+                  </p>
+
+                  <button
+                    class="work-toggle"
+                    type="button"
+                    data-details="work-oak"
+                  >
+                    <span class="work-toggle-label">View Details</span>
+                    <span class="work-toggle-arrow">↓</span>
+                  </button>
+
+                  <div class="work-details" id="work-oak">
+                    <h4 class="item-title">
+                      1. Keep 平台大会员抽奖策略
+                    </h4>
+                    <p class="body-text">
+                      针对高价值权益直接兑换导致核销率高、成本难控的问题，通过游戏化交互优化用户体验同时控制成本。
+                    </p>
+                    <ul class="bullet-list">
+                      <li>
+                        需求分析：通过数据分析及构建用户旅程地图，了解用户行为模型，总结有效的抽奖策略和用户激励机制，提供参考。
+                      </li>
+                      <li>
+                        方案设计：设计“1 次会员兑换转 3 次抽奖机会”策略，完成功能设计，使用 Figma 完成高保真原型设计。
+                      </li>
+                      <li>
+                        输出需求文档：输出需求文档，参与评审会议，整合各方反馈。
+                      </li>
+                    </ul>
+
+                    <h4 class="item-title">
+                      2. B 端券码管理系统优化
+                    </h4>
+                    <p class="body-text">
+                      当前管理系统操作流程冗长，功能分散，针对后台管理系统进行优化。
+                    </p>
+                    <ul class="bullet-list">
+                      <li>
+                        需求调研：与运营团队沟通，对现有功能模块进行可用性评估，识别交互瓶颈。
+                      </li>
+                      <li>
+                        方案设计：基于用户作业理论重新设计业务流程，优化关键步骤，开发低保真原型，同步 BI 看板数据公式，提升风险预警能力和决策支持，输出需求文档，全程跟进开发。
+                      </li>
+                      <li>
+                        数据埋点：对用户关键步骤进行数据埋点，统计相关数据指标，操作时间减少
+                        <span class="metric">38.20%</span>，错误率降低
+                        <span class="metric">20.80%</span>，操作步骤有效减少。
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- Zhihu -->
+                <article class="work-card">
+                  <header class="work-header">
+                    <div>
+                      <div class="work-company">知乎（智者四海北京技术有限公司）</div>
+                      <div class="work-role">直播策略运营实习生</div>
+                    </div>
+                    <div class="work-time">2023.08 – 2023.11 · 北京</div>
+                  </header>
+
+                  <div class="work-badges">
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      策略运营与数据分析
+                    </span>
+                    <span class="work-badge">
+                      <span class="badge-icon">📄</span>
+                      25 分钟互动法则
+                    </span>
+                  </div>
+
+                  <p class="work-summary">
+                    通过答主调研与 SQL 数据分析洞察直播流失高峰，提出「25 分钟互动法则」，在降低短期集中流失的同时，推动直播间人均观看时长提升约
+                    <span class="metric">9.80%</span>。
+                  </p>
+
+                  <button
+                    class="work-toggle"
+                    type="button"
+                    data-details="work-zhihu"
+                  >
+                    <span class="work-toggle-label">View Details</span>
+                    <span class="work-toggle-arrow">↓</span>
+                  </button>
+
+                  <div class="work-details" id="work-zhihu">
+                    <ol class="number-list">
+                      <li>
+                        需求调研：面向站内答主收集直播痛点，为优化直播策略提供指导意见；
+                      </li>
+                      <li>
+                        数据分析：撰写 SQL 查询 PV、UV、留存率等数据指标，输出分析，为优化后续的直播策划提供参考。
+                      </li>
+                      <li>
+                        策略优化：实时监控到直播过程中存在短时间内观众集中流失的明显高峰，结合数据洞察输出 “25 分钟互动法则”，使得此前的观众短期流失高峰得到有效降低，同步推动直播间人均观看时长提升
+                        <span class="metric">9.80%</span>。
+                      </li>
+                    </ol>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <!-- Education Experience -->
+            <section
+              id="education-experience"
+              class="about-section"
+              data-section="education-experience"
+            >
+              <div class="bento-card span-2">
+                <h2 class="section-title">Education Experience</h2>
+
+                <!-- NUS -->
+                <article class="work-card">
+                  <header class="work-header">
+                    <div>
+                      <div class="work-company">新加坡国立大学</div>
+                      <div class="work-role">工程设计与创新 · 硕士</div>
+                    </div>
+                    <div class="work-time">2024.08 – 2025.12 · Singapore</div>
+                  </header>
+
+                  <div class="work-badges">
+                    <span class="work-badge">设计思维</span>
+                    <span class="work-badge">产品开发</span>
+                    <span class="work-badge">可穿戴设备</span>
+                    <span class="work-badge">AI 用户体验</span>
+                  </div>
+
+                  <p class="work-summary">
+                    专注于工程设计、AI 产品与可穿戴设备的创新研发，通过跨学科方法探索技术在数字化时代的落地应用。
+                  </p>
+
+                  <button
+                    class="work-toggle"
+                    type="button"
+                    data-details="edu-nus"
+                  >
+                    <span class="work-toggle-label">View Details</span>
+                    <span class="work-toggle-arrow">↓</span>
+                  </button>
+
+                  <div class="work-details" id="edu-nus">
+                    <h4 class="item-title">详细主修课程</h4>
+                    <ul class="bullet-list">
+                      <li>设计思维与产品开发 (Design Thinking & Product Development)</li>
+                      <li>可穿戴设备开发 (Wearable Device Development)</li>
+                      <li>数字时代的技术产品营销 (Tech Product Marketing)</li>
+                      <li>AI 用户体验与界面设计的基本技能 (Essential Skills for AI UX/UI)</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- BFU -->
+                <article class="work-card">
+                  <header class="work-header">
+                    <div>
+                      <div class="work-company">北京林业大学</div>
+                      <div class="work-role">园林 · 本科</div>
+                    </div>
+                    <div class="work-time">2019.09 – 2023.06 · Beijing</div>
+                  </header>
+
+                  <div class="work-badges">
+                    <span class="work-badge">计算机辅助设计</span>
+                    <span class="work-badge">管理学</span>
+                    <span class="work-badge">社会心理学</span>
+                    <span class="work-badge">新闻学</span>
+                  </div>
+
+                  <p class="work-summary">
+                    在园林设计的基础上，广泛涉猎管理学与社会心理学，构建了对空间感知与用户行为的初步理解。
+                  </p>
+
+                  <button
+                    class="work-toggle"
+                    type="button"
+                    data-details="edu-bfu"
+                  >
+                    <span class="work-toggle-label">View Details</span>
+                    <span class="work-toggle-arrow">↓</span>
+                  </button>
+
+                  <div class="work-details" id="edu-bfu">
+                    <h4 class="item-title">详细主修课程</h4>
+                    <ul class="bullet-list">
+                      <li>计算机辅助设计 (CAD/Digital Design)</li>
+                      <li>城市开放空间设计 (Urban Open Space Design)</li>
+                      <li>管理学 (Management)</li>
+                      <li>实用新闻学 (Practical Journalism)</li>
+                      <li>社会心理学 (Social Psychology)</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <!-- Technical Skills: TECH & TOOL STACK -->
+            <section
+              id="technical-skills"
+              class="about-section"
+              data-section="technical-skills"
+            >
+              <div class="bento-card span-2">
+                <h2 class="section-title">TECH & TOOL STACK</h2>
+                <div class="tech-stack-wrap">
+                  <span class="tech-pill">Axure</span>
+                  <span class="tech-pill">Figma</span>
+                  <span class="tech-pill">SQL</span>
+                  <span class="tech-pill">Jira</span>
+                  <span class="tech-pill">Vibe Coding</span>
+                  <span class="tech-pill">Prompt Engineering</span>
+                  <span class="tech-pill">LLM Strategy</span>
+                </div>
+              </div>
+
+              <div class="bento-card span-2 recent-card">
+                <h2 class="section-title">近期关注</h2>
+                <p class="body-text">
+                  近期关注的内容和书籍，欢迎随时留言交流。
+                </p>
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <!-- Work Screen：Case Study 曝光位 -->
+      <section class="screen" id="screen-work">
+        <div class="case-layout">
+          <article class="case-card" id="case-moody">
+            <div class="case-image-wrap">
+              <img
+                src="WechatIMG166.jpg"
+                alt="Moody 车载情绪干预项目封面"
+                class="case-image"
+              />
+            </div>
+            <div class="case-body">
+              <header class="case-header">
+                <div class="case-title-block">
+                  <h2 class="case-title">Moody</h2>
+                  <p class="case-subtitle">你的车载情绪驾驶伴侣</p>
+                </div>
+              </header>
+
+              <div class="case-badges">
+                <span class="case-badge">多模态监测</span>
+                <span class="case-badge">AI语音对话</span>
+                <span class="case-badge">高保真原型</span>
+              </div>
+
+              <p class="case-summary">
+                当汽车不再只是代步工具，它能否像老友一样感知你的情绪？Moody 结合面部识别与心率算法，为路怒症与高压驾驶者提供非侵入式的实时情绪干预。
+              </p>
+
+              <div class="case-footer">
+                <a
+                  href="moody-case-study.html"
+                  class="case-read"
+                >
+                  <span class="case-read-label">Read Case Study</span>
+                  <span class="case-read-arrow">→</span>
+                </a>
+              </div>
+
+              <!-- 详情展开区 -->
+              <div class="case-details" id="case-moody-details">
+                <div class="case-details-inner">
+                  <h4 class="item-title">项目背景与痛点</h4>
+                  <p class="body-text">城市高压环境下，驾驶员情绪波动直接影响行车安全。传统车载系统缺乏对驾驶员心理状态的深度感知与主动干预。</p>
+                  <h4 class="item-title">核心功能设计</h4>
+                  <ul class="bullet-list">
+                    <li><strong>多模态感知：</strong>结合面部识别（表情分析）与心率传感器，构建压力评估模型。</li>
+                    <li><strong>非侵入干预：</strong>通过氛围灯（冷暖色调）、香氛系统及 AI 语音引导，实现毫秒级响应的情绪调节。</li>
+                    <li><strong>高保真原型：</strong>在座舱模拟环境中完成全链路交互验证。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 新增：触感色彩 Case Card -->
+          <article class="case-card" id="case-beyond-surface">
+            <div class="case-image-wrap">
+              <img
+                src="WechatIMG170.jpg"
+                alt="触感色彩项目封面"
+                class="case-image"
+              />
+            </div>
+            <div class="case-body">
+              <header class="case-header">
+                <div class="case-title-block">
+                  <h2 class="case-title">触感色彩 (Beyond the Surface)</h2>
+                  <p class="case-subtitle">专为色盲儿童设计的交互式感知玩具</p>
+                </div>
+              </header>
+
+              <div class="case-badges">
+                <span class="case-badge">颜色-温度映射</span>
+                <span class="case-badge">PID闭环控制算法</span>
+              </div>
+
+              <p class="case-summary">
+                针对全球 4.5% 色盲人群的艺术参与困境，本项目开发了一款基于 Arduino 的创新可穿戴设备。通过将视觉色彩频率转化为实时温度反馈（Peltier 效应）与多维听觉指令，打破感知边界，赋予色盲儿童‘触碰颜色’的能力。
+              </p>
+
+              <div class="case-footer">
+                <button
+                  type="button"
+                  class="case-read"
+                  data-details="case-beyond-details"
+                >
+                  <span class="case-read-label">Read Case Study</span>
+                  <span class="case-read-arrow">↓</span>
+                </button>
+              </div>
+
+              <!-- 详情展开区 -->
+              <div class="case-details" id="case-beyond-details">
+                <div class="case-details-inner">
+                  <h4 class="item-title">痛点洞察与需求定义</h4>
+                  <p class="body-text">调研发现全球约 4.5% 人口患有色盲，且近 50% 的色盲儿童由于生理障碍对绘画、美术馆等色彩相关活动缺乏兴趣。针对此现状，定义了“非视觉途径识别色彩”的核心产品需求。</p>
+                  
+                  <h4 class="item-title">多模态交互方案设计</h4>
+                  <p class="body-text">负责产品原型设计，创新性地提出“颜色-温度-声音”的多模态转换逻辑。通过颜色传感器识别物理色彩，并将其实时转化为对应的差异化温度变化与频率/音调声音提示。</p>
+                  
+                  <h4 class="item-title">产品逻辑构建</h4>
+                  <ul class="bullet-list">
+                    <li><strong>多感官补偿：</strong>建立了色彩与触觉、听觉的映射矩阵，解决色盲儿童在日常生活中（如挑选衣物、艺术创作）的辨色障碍。</li>
+                    <li><strong>PID闭环控制：</strong>通过 PID 算法精准控制 Peltier 片温度，确保不同颜色对应的温度反馈稳定且安全。</li>
+                    <li><strong>交互闭环：</strong>结合 Arduino 硬件平台，实现从色彩输入到多维感官输出的毫秒级响应。</li>
+                  </ul>
+
+                  <h4 class="item-title">产出成果</h4>
+                   <p class="body-text">成功开发出一款赋能色盲儿童的辅助性玩具原型，为特殊人群提供了全新的交互维度，提升了儿童对色彩艺术活动的参与度与认知体验。</p>
+                 </div>
+               </div>
+             </div>
+           </article>
+
+           <!-- 新增：Influstar Case Card -->
+           <article class="case-card" id="case-influstar">
+             <div class="case-image-wrap">
+               <img
+                 src="WechatIMG171.jpg"
+                 alt="Influstar 项目封面"
+                 class="case-image"
+               />
+             </div>
+             <div class="case-body">
+               <header class="case-header">
+                 <div class="case-title-block">
+                   <h2 class="case-title">Influstar</h2>
+                   <p class="case-subtitle">KOC成长与变现管理平台</p>
+                 </div>
+               </header>
+
+               <div class="case-badges">
+                 <span class="case-badge">AI 赋能决策</span>
+                 <span class="case-badge">商业变现闭环</span>
+                 <span class="case-badge">数据驱动看板</span>
+               </div>
+
+               <p class="case-summary">
+                 Influstar 是一款专为处于成长期的新晋KOL设计的连接与营销平台。通过整合品牌对接、达人协作、趋势分析与数据复盘四大核心功能，解决新手网红在流量获取、商务变现及内容创作上的痛点，助力从‘普通创作人’向‘超级红人’的跨越。
+               </p>
+
+               <div class="case-footer">
+                 <button
+                   type="button"
+                   class="case-read"
+                   data-details="case-influstar-details"
+                 >
+                   <span class="case-read-label">Read Case Study</span>
+                   <span class="case-read-arrow">↓</span>
+                 </button>
+               </div>
+
+               <!-- 详情展开区 -->
+               <div class="case-details" id="case-influstar-details">
+                 <div class="case-details-inner">
+                   <!-- 项目亮点 -->
+                   <h4 class="item-title">项目亮点</h4>
+                   <ul class="bullet-list">
+                     <li><strong>AI 赋能内容决策：</strong>利用智能算法提供趋势摘要（AI Summary）与创作灵感（AI Inspiration），帮助用户精准捕捉市场热点。</li>
+                     <li><strong>变现链路闭环：</strong>内置清晰的商务推广（Commerce）与协作系统，直观展示预期收益，极大提升变现动力与效率。</li>
+                     <li><strong>数据驱动增长：</strong>多维度的可视化收益分析与内容表现看板，让每一份投入的转化效果清晰可见。</li>
+                   </ul>
+
+                   <!-- 执行细节 -->
+                   <h4 class="item-title">执行细节</h4>
+                   <ul class="bullet-list">
+                     <li><strong>需求调研：</strong>深入访谈了 10+ 位来自不同领域的 KOC（Key Opinion Consumer），精准洞察其在变现路径上的痛点与核心诉求。</li>
+                     <li><strong>产品策划：</strong>主导了平台的全生命周期策划，核心功能涵盖热门商业内容分析、AI 驱动的个性化创作灵感及个人自媒体履历展示。独立设计了完整的产品流程图，并协同设计团队产出了高保真 App 界面。</li>
+                     <li><strong>原型测试：</strong>邀请 10+ 位 KOC 进行了深度的 UX/UI 测试，收集了积极的用户反馈。基于反馈快速迭代，优化了 App 的高保真交互界面，显著提升了用户体验。</li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+           </article>
+        </div>
+      </section>
+
+      <!-- Blog Screen -->
+      <section class="screen" id="screen-blog">
+        <div class="screen-placeholder">
+          <h2>Blog</h2>
+          <p>未来会记录关于 AI 产品、用户研究和策略思考的文章。</p>
+        </div>
+      </section>
+
+      <!-- Gallery Screen -->
+      <section class="screen" id="screen-gallery">
+        <div class="screen-placeholder">
+          <h2>Gallery</h2>
+          <p>这里将展示项目过程、原型和视觉作品片段。</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Chatbot 对话框 -->
+    <div id="chat-overlay" class="chat-overlay" aria-hidden="true">
+      <div class="chat-dialog">
+        <header class="chat-header">
+          <div class="chat-title-group">
+            <span class="chat-dot"></span>
+            <div>
+              <div class="chat-title">若榴 · 数字助理</div>
+              <div class="chat-subtitle">
+                关于我的教育、实习和项目，都可以问我
+              </div>
+            </div>
+          </div>
+          <button class="chat-close" id="chat-close" aria-label="关闭聊天">
+            ✕
+          </button>
+        </header>
+        <div class="chat-body">
+          <div class="chat-messages" id="chat-messages">
+            <div class="chat-row bot">
+              <div class="chat-bubble">
+                嗨，我是若榴的数字分身。你可以问我：在小米具体负责什么、哪个项目最能代表我，或者我适合什么岗位。
+              </div>
+            </div>
+          </div>
+          <form class="chat-input-row" id="chat-form">
+            <input
+              id="chat-input"
+              type="text"
+              autocomplete="off"
+              placeholder="输入你的问题…"
+            />
+            <button type="submit" class="chat-send">发送</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

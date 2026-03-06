@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moody - 车载情绪驾驶伴侣 | Case Study</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --case-text-main: #1d1d1f;
+        --case-text-body: #424245;
+        --case-bg: #ffffff;
+      }
+
+      body.case-study-mode {
+        background: var(--case-bg);
+        color: var(--case-text-main);
+        overflow-x: hidden;
+      }
+
+      body.case-study-mode::before {
+        display: none; /* 移除首页的毛玻璃背景 */
+      }
+
+      /* 沉浸式导航 */
+      .case-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        display: flex;
+        align-items: center;
+        padding: 0 32px;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .back-link {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: opacity 0.2s ease;
+      }
+
+      .back-link:hover {
+        opacity: 0.7;
+      }
+
+      /* 故事线容器 */
+      .case-container {
+        max-width: 980px;
+        margin: 0 auto;
+        /* 移除顶部留白，由 Hero 自己处理 */
+      }
+
+      /* Hero 必须首屏可见 */
+      .case-section.hero .hero-title {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        color: #ffffff !important;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 2;
+        position: relative;
+      }
+
+      /* 只有非 Hero 章节的 reveal 才默认隐藏 */
+      .case-section:not(.hero).reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .case-section:not(.hero).reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 章节样式 */
+      .case-section {
+        padding: 80px 24px; /* 缩小间距 */
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .case-section.hero {
+        padding: 0;
+        height: 60vh; /* 调整为 60vh */
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0; /* 确保不紧贴导航但无多余留白 */
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4); /* 半透明黑色遮罩 */
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        text-align: center;
+        max-width: 800px;
+        margin: 0;
+        padding: 0 24px;
+      }
+
+      .section-num {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .section-heading {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: -0.01em;
+      }
+
+      .section-body {
+        font-size: 21px;
+        line-height: 1.6;
+        color: var(--case-text-body);
+        max-width: 720px;
+      }
+
+      .case-image-full {
+        width: 100%;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+      }
+
+      .case-image-full:hover {
+        transform: scale(1.01);
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      @media (max-width: 768px) {
+        .hero-title { font-size: 36px; }
+        .section-heading { font-size: 28px; }
+        .section-body { font-size: 18px; }
+        .image-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body class="case-study-mode">
+    <nav class="case-nav">
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </nav>
+
+    <main class="case-container">
+      <!-- Hero: 使用内联样式确保图片读取 -->
+      <section 
+        class="case-section hero" 
+        style="background: url('./Moody首页大图.png') no-repeat center center; background-size: cover;"
+      >
+        <div class="hero-overlay"></div>
+        <h1 class="hero-title">Moody - 你的车载情绪驾驶伴侣</h1>
+      </section>
+
+      <!-- 01. Challenge -->
+      <section id="challenge" class="case-section reveal">
+        <div class="text-content">
+          <span class="section-num">01. CHALLENGE</span>
+          <h2 class="section-heading">驾驶情绪：被忽视的安全隐患</h2>
+          <p class="section-body">
+            在现代城市中，驾驶情绪波动不仅影响体验，更是生命安全的隐患。调研显示 40% 的愤怒导致激进驾驶，约 65% 的交通事故与“路怒症”相关。网约车司机面临日均 10-12 小时高强度工作，急需心理缓冲。
+          </p>
+        </div>
+        <img src="image_d4d386.jpg" alt="Data visualization" class="case-image-full" />
+      </section>
+
+      <!-- 02. Research -->
+      <section id="research" class="case-section reveal">
+        <div class="text-content">
+          <span class="section-num">02. USER RESEARCH</span>
+          <h2 class="section-heading">深入访谈与共情分析</h2>
+          <p class="section-body">
+            深度访谈 45 位驾驶员，发现“被加塞”是核心诱因（26.3%）。相比生硬预警，60% 用户更偏向“伴侣式”反馈。通过价值主张画布与情绪旅程图，我们锁定了关键干预时机。
+          </p>
+        </div>
+        <img src="image_d4d2e8.jpg" alt="User persona" class="case-image-full" />
+        <div class="image-grid">
+          <img src="image_d4cf69.jpg" alt="Value proposition canvas" class="case-image-full" />
+          <img src="image_d4cfc1.jpg" alt="User journey map" class="case-image-full" />
+        </div>
+      </section>
+
+      <!-- 03. Solution -->
+      <section id="solution" class="case-section reveal">
+        <div class="text-content">
+          <span class="section-num">03. CORE SOLUTION</span>
+          <h2 class="section-heading">多模态干预系统</h2>
+          <p class="section-body">
+            Moody 是一套“感知-决策-干预-反射”四层系统。利用红外监测微表情与 HRV 数据，通过视觉 (氛围灯)、听觉 (共情语音)、嗅觉 (精油) 进行多模态干预。
+          </p>
+        </div>
+        <img src="image_d4cee6.jpg" alt="Mapping table" class="case-image-full" />
+      </section>
+
+      <!-- 04. Prototype -->
+      <section id="prototype" class="case-section reveal">
+        <div class="text-content">
+          <span class="section-num">04. PROTOTYPING</span>
+          <h2 class="section-heading">软硬件集成开发</h2>
+          <p class="section-body">
+            使用 Arduino 与 ESP32 控制硬件，Python 运行 DeepFace 进行情绪映射。干预延迟低于 150ms。
+          </p>
+        </div>
+        <div class="image-grid">
+          <img src="image_d4cc1c.jpg" alt="Hardware prototype" class="case-image-full" />
+          <img src="image_d4cb4a.jpg" alt="Emotion detection screenshot" class="case-image-full" />
+        </div>
+      </section>
+
+      <!-- 05. Results -->
+      <section id="results" class="case-section reveal">
+        <div class="text-content">
+          <span class="section-num">05. IMPACT</span>
+          <h2 class="section-heading">测试结果与反馈</h2>
+          <p class="section-body">
+            实机测试中，驾驶员平均心率从 106 bpm 降至 76 bpm，语音陪伴评分高达 4.64 / 5。
+          </p>
+        </div>
+        <img src="image_d4cbc1.jpg" alt="Heart rate chart" class="case-image-full" />
+      </section>
+    </main>
+
+    <script>
+      // Intersection Observer for fade-in up animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
