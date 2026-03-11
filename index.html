@@ -30,6 +30,68 @@
       <!-- ===== 主内容：四个一级 Tab Screen ===== -->
       <!-- About Screen -->
       <section class="screen active" id="screen-about">
+        <!-- Hero Section: Fullscreen Particle Text -->
+      <section id="about-intro" class="hero-fullscreen-section about-section" data-section="about-intro">
+          <div class="hero-content-layer">
+              <!-- 1. Giant Particle Title -->
+              <canvas id="hero-title-canvas"></canvas>
+
+              <!-- 2. Subtitle -->
+            <h2 class="hero-subtitle">欢迎和我共创故事。</h2>
+
+              <!-- Interaction Wrapper: Button + Poker Burst -->
+              <div class="hero-interaction-wrapper">
+                  <!-- 3. AI Chat Button (Ethereal Glow) -->
+                  <button class="chat-trigger-ethereal" id="poker-trigger-btn">
+                      <span class="icon">✨</span>
+                      <span class="text">与我的 AI 替身聊聊</span>
+                  </button>
+
+                  <!-- 4. Burst Poker Decoration -->
+                <div class="poker-burst-container" id="poker-burst-container">
+                    <!-- Background Floating Particles -->
+                    <div class="hero-floating-particles" id="hero-floating-particles"></div>
+                    
+                    <!-- Card 1: Top Left -->
+                      <div class="poker-card burst-card" style="--i:1">
+                          <div class="card-face card-back"></div>
+                          <div class="card-face card-front">
+                              <span class="tech-icon">⚡</span>
+                          </div>
+                      </div>
+                      <!-- Card 2: Top Right -->
+                      <div class="poker-card burst-card" style="--i:2">
+                          <div class="card-face card-back"></div>
+                          <div class="card-face card-front">
+                              <span class="tech-icon">🧠</span>
+                          </div>
+                      </div>
+                      <!-- Card 3: Bottom Left -->
+                      <div class="poker-card burst-card" style="--i:3">
+                          <div class="card-face card-back"></div>
+                          <div class="card-face card-front">
+                              <span class="tech-icon">🎲</span>
+                          </div>
+                      </div>
+                      <!-- Card 4: Bottom Right -->
+                      <div class="poker-card burst-card" style="--i:4">
+                          <div class="card-face card-back"></div>
+                          <div class="card-face card-front">
+                              <span class="tech-icon">🔮</span>
+                          </div>
+                      </div>
+                      <!-- Card 5: Top Center (Ace) -->
+                      <div class="poker-card burst-card" style="--i:5">
+                          <div class="card-face card-back"></div>
+                          <div class="card-face card-front">
+                              <span class="tech-icon">♠️</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
         <div class="two-column">
           <!-- 左侧 Sticky Sidebar -->
           <aside class="about-sidebar">
@@ -92,70 +154,7 @@
 
           <!-- 右侧宽幅滚动区 -->
           <section class="about-content">
-            <!-- Introduction: Hero Bento Box -->
-            <section
-              id="about-intro"
-              class="about-section"
-              data-section="about-intro"
-            >
-              <div class="hero-bento">
-                <!-- Main Card -->
-                <div class="bento-card hero-main">
-                  <div class="hero-header">
-                    <div class="hero-title-wrap">
-                      <h1 class="hero-greeting">Hi, 我是若榴。</h1>
-                    </div>
-                    <!-- 数字分身按钮：重构为 AI 魔法风格 -->
-                    <button
-                      id="chat-trigger"
-                      class="chat-trigger-magic"
-                      type="button"
-                      aria-label="与我的 AI 替身对话"
-                    >
-                      <span class="magic-bg"></span>
-                      <span class="magic-label">
-                        <span class="magic-icon">✨</span>
-                        与我的 AI 替身聊聊
-                      </span>
-                    </button>
-                  </div>
-                  <p class="hero-tagline">AI Product Manager & Storyteller.</p>
-                </div>
-
-                <!-- Status Card: Live Status Widget -->
-                <div class="bento-card hero-status">
-                  <div class="status-header">
-                    <div class="status-dot-wrap">
-                      <span class="pulse-dot"></span>
-                      <span class="pulse-ring"></span>
-                    </div>
-                    <span class="status-label">LIVE STATUS</span>
-                  </div>
-                  
-                  <div class="widget-content">
-                    <div class="widget-item">
-                      <div class="item-info">
-                        <span class="item-name">Vibe Coding & AI Product</span>
-                        <div class="mini-progress">
-                          <div class="progress-bar-flow"></div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="widget-item">
-                      <div class="item-info">
-                        <span class="item-name">Storytelling</span>
-                        <div class="sparkle-wrap">
-                          <span class="sparkle"></span>
-                          <span class="sparkle"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
+            
             <!-- Work Experience -->
             <section
               id="work-experience"
@@ -693,9 +692,17 @@
 
       <!-- Gallery Screen -->
       <section class="screen" id="screen-gallery">
-        <div class="screen-placeholder">
-          <h2>Gallery</h2>
-          <p>这里将展示项目过程、原型和视觉作品片段。</p>
+        <div class="work-grid">
+          <!-- Project 1 -->
+          <article class="work-card">
+            <div class="card-image placeholder-gradient"></div>
+            <div class="card-content">
+              <h3>Smart Retail Analytics</h3>
+              <p class="role">Product Lead</p>
+              <p class="desc">AI-driven insights platform for offline retail optimization.</p>
+              <p class="maintenance-hint">【此处内容正在维护中】</p>
+            </div>
+          </article>
         </div>
       </section>
     </div>
