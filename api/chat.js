@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const userMessage = req.body.message;
     
     // 带着 Vercel 保险箱里的钥匙，去敲门请求 Coze 大模型
-    const response = await fetch('https://api.coze.com/open_api/v2/chat', {
+    const response = await fetch('https://api.coze.cn/open_api/v2/chat', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.COZE_API_KEY}`,
