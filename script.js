@@ -64,13 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 初始调用一次，确保初始状态正确
   initHeroParticleSystem();
 
-  // ===== Chatbot Logic (Restored) =====
-  const chatTrigger = document.getElementById("chat-trigger-hero"); 
+  // ===== Chatbot Logic (Refactored for API) =====
+  // 绑定到扑克牌触发按钮，因为它也是聊天入口
+  const chatTrigger = document.getElementById("poker-trigger-btn"); 
   const chatOverlay = document.getElementById("chat-overlay");
   const chatClose = document.getElementById("chat-close");
   const messagesEl = document.getElementById("chat-messages");
   const form = document.getElementById("chat-form");
   const input = document.getElementById("chat-input");
+  const sendBtn = document.querySelector(".chat-send");
 
   function openChat() {
     if (!chatOverlay) return;
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") closeChat();
   });
 
-  // Chatbot Rules
+  // Helper: Append Message Bubble
   function appendMessage(text, from = "bot") {
     if (!messagesEl) return;
     const row = document.createElement("div");
@@ -109,50 +111,89 @@ document.addEventListener("DOMContentLoaded", () => {
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
-  const rules = [
-    {
-      match: /小米|xiao ?mi|xiaomi|ai/i,
-      answer:
-        "在小米，我作为 AI 策略产品经理实习生，主导文本生成能力提升专项，可用率提升 30.8%，并搭建 Badcase 滚动优化机制。"
-    },
-    {
-      match: /橡树黑卡|b端|b2b|saas/i,
-      answer:
-        "在橡树黑卡，我负责 B 端产品相关工作，包括 Keep 大会员抽奖策略设计和券码管理系统的流程与交互优化。"
-    },
-    {
-      match: /知乎|直播|运营|zhihu|live/i,
-      answer:
-        "在知乎直播，我做直播策略运营，包括答主调研、SQL 数据分析，以及提出「25 分钟互动法则」等策略。"
-    },
-    {
-      match: /教育|学校|nus|国立|北林|教育经历/i,
-      answer:
-        "硕士就读于新加坡国立大学工程设计与创新专业，本科就读于北京林业大学园林学院，细节可以在 Education Experience 板块看到。"
-    },
-    {
-      match: /技能|skills?|工具|figma|axure|sql|jira/i,
-      answer:
-        "我熟悉 Office、Axure、Figma、Visio、SQL、Jira 等工具，详情在 Technical Skills 板块。"
-    }
-  ];
-
-  function replyFor(text) {
-    for (const r of rules) {
-      if (r.match.test(text)) return r.answer;
-    }
-    return "你可以问我：你在小米主要负责哪些专项？你做过哪些量化提升？你更擅长哪类产品工作？或者告诉我你关心的板块（实习、项目、教育）。";
+  // Helper: Typewriter Effect
+  function typeMessage(element, text, speed = 30) {
+      let i = 0;
+      element.textContent = "";
+      const interval = setInterval(() => {
+          element.textContent += text.charAt(i);
+          i++;
+          if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+          if (i >= text.length) {
+              clearInterval(interval);
+          }
+      }, speed);
   }
 
   if (form && input) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const value = input.value.trim();
       if (!value) return;
+
+      // 1. 显示用户提问
       appendMessage(value, "user");
       input.value = "";
-      const answer = replyFor(value);
-      setTimeout(() => appendMessage(answer, "bot"), 200);
+      
+      // 2. 锁定输入，防止重复提交
+      input.disabled = true;
+      if (sendBtn) sendBtn.disabled = true;
+      input.placeholder = "Vera 正在思考...";
+
+      // 3. 添加 Loading 状态气泡
+      const loadingId = "loading-" + Date.now();
+      const loadingRow = document.createElement("div");
+      loadingRow.className = "chat-row bot";
+      loadingRow.id = loadingId;
+      loadingRow.innerHTML = `<div class="chat-bubble">Vera 正在思考...</div>`;
+      messagesEl.appendChild(loadingRow);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      try {
+        // 4. 调用后端 API
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: value })
+        });
+
+        // 移除 Loading 气泡
+        const loadingEl = document.getElementById(loadingId);
+        if (loadingEl) loadingEl.remove();
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        const botReply = data.reply || "我似乎遇到了一些连接问题，请稍后再试。";
+
+        // 5. 创建回复气泡并执行打字机效果
+        const row = document.createElement("div");
+        row.className = "chat-row bot";
+        const bubble = document.createElement("div");
+        bubble.className = "chat-bubble";
+        row.appendChild(bubble);
+        messagesEl.appendChild(row);
+        
+        typeMessage(bubble, botReply);
+
+      } catch (error) {
+        console.error("Chat Error:", error);
+        // 移除 Loading (如果还在)
+        const loadingEl = document.getElementById(loadingId);
+        if (loadingEl) loadingEl.remove();
+        
+        appendMessage("抱歉，我暂时无法连接到服务器，请稍后再试。", "bot");
+      } finally {
+        // 6. 恢复输入状态
+        input.disabled = false;
+        if (sendBtn) sendBtn.disabled = false;
+        input.placeholder = "输入你的问题…";
+        input.focus();
+      }
     });
   }
 
