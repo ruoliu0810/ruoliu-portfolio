@@ -5,39 +5,54 @@ export default async function handler(req, res) {
 
   try {
     const userMessage = req.body.message;
-    
-    const response = await fetch('https://api.coze.cn/open_api/v2/chat', {
+    const apiKey = process.env.DEEPSEEK_API_KEY;
+
+    // 🧠 你的专属数字分身记忆库与思想钢印
+    const mySoulAndResume = `
+      你是王若榴（Ruoliu）的数字替身。一个极具战略眼光、拥有全局视野的“INTJ 专属工作与生活组织导师”。
+      
+      【你的性格】
+      - 高情商的成熟 INTJ，自信、专业、带有高级的幽默感。
+      - 拒绝机械化的客服腔调，像个聪明的合伙人在和朋友聊天。
+      
+      【若榴的个人背景与记忆库】
+      - 教育背景：毕业于新加坡国立大学（NUS）工程设计与创新专业，拥有开阔的国际视野。
+      - 职业发展：即将入职小米，担任 AI 策略产品经理。
+      - 专业能力：极其关注效率，主导过文本生成能力提升专项（将可用率提升30.8%），并善于搭建数据闭环。
+      - 个人探索：除了硬核的 AI 与科技领域，对心理、短剧编剧、内容创作（如运营个人IP“引数十六”）也有浓厚兴趣。目前还在开发一款基于四象限法则的 iOS 任务管理 App。
+      
+      【回复规则】
+      - 根据上述记忆库回答问题，如果用户问了你不知道的私人问题，请优雅地引导他们通过网页邮箱联系若榴本人。严禁虚构经历。
+    `;
+
+    // 🚀 直连 DeepSeek 官方 API
+    const response = await fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.COZE_API_KEY}`,
         'Content-Type': 'application/json',
-        'Accept': '*/*'
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        bot_id: process.env.COZE_BOT_ID,
-        user: "visitor_" + Math.random().toString(36).substring(7),
-        query: userMessage,
-        stream: false
+        model: 'deepseek-chat', // 使用 DeepSeek 的对话大模型
+        messages: [
+          { role: 'system', content: mySoulAndResume },
+          { role: 'user', content: userMessage }
+        ],
+        temperature: 0.7 // 控制输出的稳定与幽默平衡
       })
     });
 
     const data = await response.json();
-    
-    // 🚨 【透视仪开启】：只要 Coze 返回的 code 不是 0，直接把原始报错砸到页面上！
-    if (data.code !== 0) {
-      return res.status(200).json({ 
-        reply: `【系统诊断报错】错误码: ${data.code}，原因: ${data.msg}。` 
-      });
+
+    // 🚨 透视仪：如果 API 报错，直接打到网页上
+    if (data.error) {
+       return res.status(200).json({ reply: `【DeepSeek 接口诊断】${data.error.message}` });
     }
-    
-    // 🚨 如果没有报错，但也没找到回答，把返回的原始数据全打出来！
-    let answer = `【数据解析异常】Coze 返回了: ${JSON.stringify(data)}`;
-    
-    if (data.messages && data.messages.length > 0) {
-      const answerObj = data.messages.find(msg => msg.type === 'answer');
-      if (answerObj) {
-        answer = answerObj.content;
-      }
+
+    // 精准提取大模型的回答
+    let answer = "抱歉，我的系统逻辑似乎遇到了短暂的阻塞，请稍后再试。";
+    if (data.choices && data.choices.length > 0) {
+      answer = data.choices[0].message.content;
     }
 
     return res.status(200).json({ reply: answer });
