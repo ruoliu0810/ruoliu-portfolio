@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // 仅允许前端发 POST 请求过来
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -7,7 +6,6 @@ export default async function handler(req, res) {
   try {
     const userMessage = req.body.message;
     
-    // 带着 Vercel 保险箱里的钥匙，去敲门请求 Coze 大模型
     const response = await fetch('https://api.coze.cn/open_api/v2/chat', {
       method: 'POST',
       headers: {
@@ -25,8 +23,16 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     
-    // 从 Coze 复杂的返回数据中，精准提取出 AI 的回答文本
-    let answer = "抱歉，我的云端大脑似乎网络波动了一下，请稍后再试。";
+    // 🚨 【透视仪开启】：只要 Coze 返回的 code 不是 0，直接把原始报错砸到页面上！
+    if (data.code !== 0) {
+      return res.status(200).json({ 
+        reply: `【系统诊断报错】错误码: ${data.code}，原因: ${data.msg}。` 
+      });
+    }
+    
+    // 🚨 如果没有报错，但也没找到回答，把返回的原始数据全打出来！
+    let answer = `【数据解析异常】Coze 返回了: ${JSON.stringify(data)}`;
+    
     if (data.messages && data.messages.length > 0) {
       const answerObj = data.messages.find(msg => msg.type === 'answer');
       if (answerObj) {
@@ -34,11 +40,9 @@ export default async function handler(req, res) {
       }
     }
 
-    // 把大模型的回答原封不动地发回给你的前端网页
     return res.status(200).json({ reply: answer });
 
   } catch (error) {
-    console.error('Coze API Error:', error);
-    return res.status(500).json({ reply: "后方网络拥堵，Vera 正在重新连接..." });
+    return res.status(500).json({ reply: `【Vercel 内部崩溃】${error.message}` });
   }
 }
